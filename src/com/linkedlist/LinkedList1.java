@@ -44,14 +44,19 @@ public class LinkedList1 {
 		}
 	}
 	
-	public ListNode pop() {
-		if(head == null) {
-			return null;
+	public ListNode popLast() {
+		if(head == null || head.next == null) {
+			return head;
 		}
-		ListNode temp = head;
-		head = head.next;
-		temp.next = null;
-		return temp;
+		ListNode current = head;
+		ListNode previous = null;
+		
+		while(current.next != null) {
+			previous = current;
+			current = current.next;
+		}
+		previous.next = null;
+		return current;
 	}
 	
 	public static void main(String[] args) {
@@ -62,8 +67,7 @@ public class LinkedList1 {
 		linkedList1.insert( 2,30);
 		linkedList1.displayLinkedList();
 		
-		System.out.println(linkedList1.pop().data);
-		
+		System.out.println(linkedList1.popLast().data);
 		linkedList1.displayLinkedList();
 	}
 }
