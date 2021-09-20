@@ -25,12 +25,6 @@ public class LinkedList1 {
 		System.out.println("null");
 	}
 	
-	/*public void insertAtBegining(int value) {
-		ListNode newNode = new ListNode(value);
-		newNode.next = head;
-		head = newNode;
-	}*/
-	
 	public void insert(int position, int value) {
 		ListNode node = new ListNode(value);
 		if(position == 1) {
@@ -49,18 +43,16 @@ public class LinkedList1 {
 			node.next = current;
 		}
 	}
-	/*public void insertAtEnd(int value) {
-		ListNode newNode = new ListNode(value);
+	
+	public ListNode pop() {
 		if(head == null) {
-			head = newNode;
-			return;
+			return null;
 		}
-		ListNode current =head;
-		while(current.next!= null) {
-			current = current.next;
-		}
-		current.next = newNode;
-	}*/
+		ListNode temp = head;
+		head = head.next;
+		temp.next = null;
+		return temp;
+	}
 	
 	public static void main(String[] args) {
 		LinkedList1 linkedList1 = new LinkedList1();
@@ -68,6 +60,10 @@ public class LinkedList1 {
 		linkedList1.insert( 1,56);
 		linkedList1.insert( 2,70);
 		linkedList1.insert( 2,30);
+		linkedList1.displayLinkedList();
+		
+		System.out.println(linkedList1.pop().data);
+		
 		linkedList1.displayLinkedList();
 	}
 }
