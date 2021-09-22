@@ -1,12 +1,10 @@
-package com.linkedlist;
-
-import java.util.*;
+package com.linkedlist;  
 
 public class LinkedList1 {
 	
-	private ListNode head;
+	public ListNode head;
 	
-	private static class ListNode{
+	private class ListNode{
 		private int data;
 		private ListNode next;
 		
@@ -44,19 +42,19 @@ public class LinkedList1 {
 		}
 	}
 	
-	public ListNode popLast() {
-		if(head == null || head.next == null) {
-			return head;
+	public boolean find(int searchKey) {
+		if(head==null) {
+			return false;
 		}
-		ListNode current = head;
-		ListNode previous = null;
 		
-		while(current.next != null) {
-			previous = current;
+		ListNode current = head;
+		while(current != null){
+			if(current.data == searchKey) {
+				return true;
+			}
 			current = current.next;
 		}
-		previous.next = null;
-		return current;
+		return false;
 	}
 	
 	public static void main(String[] args) {
@@ -67,7 +65,6 @@ public class LinkedList1 {
 		linkedList1.insert( 2,30);
 		linkedList1.displayLinkedList();
 		
-		System.out.println(linkedList1.popLast().data);
-		linkedList1.displayLinkedList();
+		linkedList1.find(30);
 	}
 }
